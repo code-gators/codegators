@@ -3,7 +3,7 @@
     <b-navbar>
       <b-navbar-brand>
         <img
-          src="@/assets/codegatorlogo_white.png"
+          :src="require('../assets/codegatorlogo_white.png')"
           class="d-inline-block align-top"
           alt="Gator"
         />
