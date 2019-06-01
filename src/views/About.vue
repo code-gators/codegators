@@ -1,5 +1,10 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="About">
+    <h1>Board of Directors</h1>
   </div>
 </template>
+<style lang="scss">
+.About {
+  padding: 20px;
+}
+</style>
