@@ -1,5 +1,10 @@
 <template>
-  <div class="home">
-    <h1>Code Gators</h1>
+  <div class="Home">
+    <h1 class="Home__Title">Code Gators</h1>
   </div>
 </template>
+<style lang="scss">
+.Home {
+  padding: 20px;
+}
+</style>
