@@ -1,5 +1,6 @@
 <template>
   <div class="Home">
+    <FocusBlock />
     <h1 class="Home__Title">Code Gators</h1>
     <b-card
       class="Home__Card"
@@ -14,10 +15,20 @@
     </b-card>
   </div>
 </template>
+<script>
+import FocusBlock from "@/components/FocusBlock";
+
+export default {
+  components: {
+    FocusBlock
+  }
+};
+</script>
+
 <style lang="scss">
 .Home {
-  padding: 20px;
   .card {
+    margin: 20px;
     background: #00bc11;
     color: #ffffff;
 
