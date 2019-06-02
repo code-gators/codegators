@@ -9,7 +9,7 @@
         />
       </b-navbar-brand>
       <b-navbar-nav class="Header__Links">
-        <b-nav-item :to="{ name: 'Jobs' }">Jobs</b-nav-item>
+        <b-nav-item :to="{ name: 'jobs' }">Jobs</b-nav-item>
         <b-nav-item :to="{ name: 'about' }">About Us</b-nav-item>
         <b-nav-item :to="{ name: 'mission' }">Mission</b-nav-item>
         <b-nav-item :to="{ name: 'sponsors' }">Sponsors</b-nav-item>

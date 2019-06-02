@@ -2,7 +2,7 @@
   <div class="Jobs">
     <h1 class="Jobs__Title">Job openings</h1>
     <b-card
-      class="jobs__Card"
+      class="Jobs__Card"
       :img-src="require('../assets/hand_code.png')"
       img-alt="Card image"
       img-right
