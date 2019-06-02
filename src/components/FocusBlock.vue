@@ -4,6 +4,9 @@
       <div class="FocusBlock__Body__Title">
         Start learning today!
       </div>
+      <div>
+        <img :src="require('../assets/happy_coder.png')" alt="Gator" />
+      </div>
     </div>
   </div>
 </template>
@@ -12,14 +15,21 @@
 .FocusBlock {
   height: 32vh;
   &__Body {
+    &__Title {
+      padding-left: 30px;
+    }
+    img {
+      height: 28vh;
+      margin-right: 30px;
+    }
     display: flex;
     align-items: center;
 
     background-image: linear-gradient(
         to left,
         rgba(255, 0, 0, 0),
-        5%,
-        rgba(153, 11, 236, 1)
+        1%,
+        rgb(241, 150, 12)
       ),
       url("~@/assets/laptop_code.png"); /* Standard syntax (must be last) */
     background-repeat: no-repeat;
@@ -47,10 +57,6 @@
     a .router-link-active {
       color: rgb(226, 223, 31);
     }
-  }
-
-  img {
-    height: 30px;
   }
   &__Buttons button {
     background: #00bc11;
