@@ -15,12 +15,34 @@
         <b-nav-item :to="{ name: 'sponsors' }">Sponsors</b-nav-item>
       </b-navbar-nav>
       <b-nav-form class="ml-auto Header__Buttons">
-        <b-button class="my-2 my-sm-0">Create Account</b-button>
-        <b-button class="my-2 my-sm-0">Sign In</b-button>
+        <b-button class="my-2 my-sm-0" @click="createAccount"
+          >Create Account</b-button
+        >
+        <b-button class="my-2 my-sm-0" @click="login">Sign In</b-button>
       </b-nav-form>
     </b-navbar>
+    <div id="netlify-modal"></div>
   </div>
 </template>
+<script>
+import netlifyIdentity from "netlify-identity-widget";
+
+export default {
+  mounted() {
+    netlifyIdentity.init({
+      container: "#netlify-modal" // defaults to document.body,
+    });
+  },
+  methods: {
+    login() {
+      netlifyIdentity.open("login"); // open the modal to the login tab
+    },
+    createAccount() {
+      netlifyIdentity.open("signup");
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .Header {

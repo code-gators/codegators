@@ -38,7 +38,7 @@
     &__Title {
       margin: 0 auto;
       color: #ffffff;
-      font-size: 6vmin;
+      font-size: 8vmin;
       font-weight: 800;
     }
   }
