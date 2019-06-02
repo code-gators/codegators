@@ -1,7 +1,7 @@
 <template>
   <div class="Header">
     <b-navbar>
-      <b-navbar-brand>
+      <b-navbar-brand :to="{ name: 'home' }">
         <img
           :src="require('../assets/codegatorlogo_white.png')"
           class="d-inline-block align-top"
@@ -9,21 +9,20 @@
         />
       </b-navbar-brand>
       <b-navbar-nav class="Header__Links">
-        <b-nav-item :to="{ name: 'home' }">Home</b-nav-item>
+        <b-nav-item :to="{ name: 'Jobs' }">Jobs</b-nav-item>
         <b-nav-item :to="{ name: 'about' }">About Us</b-nav-item>
         <b-nav-item :to="{ name: 'mission' }">Mission</b-nav-item>
+        <b-nav-item :to="{ name: 'sponsors' }">Sponsors</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .Header {
   background: #00bc11;
-  &__Links {
-    .nav-link,
-    .router-link-exact-active,
-    .router-link-active {
+  .navbar-nav {
+    .nav-link {
       color: #ffffff;
       font-size: 4vmin;
     }

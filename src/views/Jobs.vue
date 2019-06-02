@@ -1,21 +1,20 @@
 <template>
-  <div class="Home">
-    <h1 class="Home__Title">Code Gators</h1>
+  <div class="Jobs">
+    <h1 class="Jobs__Title">Job openings</h1>
     <b-card
-      class="Home__Card"
+      class="jobs__Card"
       :img-src="require('../assets/hand_code.png')"
       img-alt="Card image"
       img-right
     >
       <b-card-text>
-        Some quick example text to build on the card and make up the bulk of the
-        card's content.
+        JOBS
       </b-card-text>
     </b-card>
   </div>
 </template>
 <style lang="scss">
-.Home {
+.Jobs {
   padding: 20px;
   .card {
     background: #00bc11;
