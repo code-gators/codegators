@@ -11,6 +11,16 @@
         JOBS
       </b-card-text>
     </b-card>
+    <b-card
+      class="Jobs__Card"
+      :img-src="require('../assets/job_stairs.png')"
+      img-alt="Card image"
+      img-right
+    >
+      <b-card-text>
+        JOBS
+      </b-card-text>
+    </b-card>
   </div>
 </template>
 <style lang="scss">
@@ -19,6 +29,7 @@
   .card {
     background: #00bc11;
     color: #ffffff;
+    margin: 10px;
 
     img {
       height: 200px;
