@@ -1,4 +1,5 @@
 # codegators
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5f9f9d01-d2be-488b-831b-7b60639617ac/deploy-status)](https://app.netlify.com/sites/lucid-ritchie-ced2a1/deploys)
 
 ## Project setup
 ```
