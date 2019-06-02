@@ -20,7 +20,11 @@
     }
     img {
       height: 28vh;
-      margin-right: 30px;
+      padding-right: 30px;
+      @media screen and (max-width: 500px) {
+        height: 20vh;
+        padding-right: 10px;
+      }
     }
     display: flex;
     align-items: center;
