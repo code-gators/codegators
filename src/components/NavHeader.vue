@@ -55,7 +55,7 @@ export default {
     },
     signout() {
       netlifyIdentity.logout();
-      window.location.reload();
+      this.setUser({});
     },
     createAccount() {
       netlifyIdentity.open("signup");

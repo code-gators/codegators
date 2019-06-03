@@ -31,6 +31,9 @@ export default {
 .FocusBlock {
   height: 32vh;
   &__Body {
+    border-bottom: 4px solid #3d278e;
+    border-top: 4px solid #3d278e;
+
     &__Title {
       padding-left: 30px;
     }
