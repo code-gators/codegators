@@ -41,7 +41,7 @@ export default {
       height: 28vh;
       padding-right: 30px;
       @media screen and (max-width: 500px) {
-        height: 20vh;
+        height: 16vh;
         padding-right: 10px;
       }
     }

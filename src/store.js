@@ -24,6 +24,13 @@ export default new Vuex.Store({
       } else {
         return false;
       }
+    },
+    getJwt(state) {
+      if (state.user.user_metadata) {
+        return state.user.token;
+      } else {
+        return false;
+      }
     }
   }
 });

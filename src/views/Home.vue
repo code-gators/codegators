@@ -27,6 +27,11 @@ export default {
 
 <style lang="scss">
 .Home {
+  &__Title {
+    text-align: center;
+    font-family: "Russo One", sans-serif;
+    margin: 20px;
+  }
   .card {
     margin: 20px;
     background: #00bc11;

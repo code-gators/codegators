@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import store from "./store";
 
 Vue.use(Router);
-
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -26,6 +26,15 @@ export default new Router({
         import(/* webpackChunkName: "mission" */ "./views/Mission.vue")
     },
     {
+      path: "/profile",
+      name: "profile",
+      component: () =>
+        import(/* webpackChunkName: "profile" */ "./views/Profile.vue"),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/jobs",
       name: "jobs",
       component: () => import(/* webpackChunkName: "jobs" */ "./views/Jobs.vue")
@@ -38,3 +47,18 @@ export default new Router({
     }
   ]
 });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const { access_token: token, expires_at: expires } = store.getters.getJwt;
+    console.log(Date.now(), expires);
+    if (token !== "" && expires > Date.now()) {
+      next();
+      return;
+    }
+    next("/notfound");
+  } else {
+    next();
+  }
+});
+
+export default router;

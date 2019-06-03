@@ -12,7 +12,6 @@
         <b-nav-item :to="{ name: 'jobs' }">Jobs</b-nav-item>
         <b-nav-item :to="{ name: 'about' }">About Us</b-nav-item>
         <b-nav-item :to="{ name: 'mission' }">Mission</b-nav-item>
-        <b-nav-item :to="{ name: 'sponsors' }">Sponsors</b-nav-item>
       </b-navbar-nav>
       <b-nav-form v-if="!user" class="ml-auto Header__Buttons">
         <b-button class="my-2 my-sm-0" @click="createAccount"
@@ -21,7 +20,11 @@
         <b-button class="my-2 my-sm-0" @click="login">Sign In</b-button>
       </b-nav-form>
       <b-nav-form v-else class="ml-auto Header__Buttons">
-        <b-button class="my-2 my-sm-0" @click="signout">Sign Out</b-button>
+        <router-link class="mr-3" :to="{ name: 'profile' }">
+          <font-awesome-icon :icon="appIcon" />
+        </router-link>
+
+        <font-awesome-icon :icon="exit" @click="signout" />
       </b-nav-form>
     </b-navbar>
     <div id="netlify-modal"></div>
@@ -30,6 +33,7 @@
 <script>
 import netlifyIdentity from "netlify-identity-widget";
 import { mapActions, mapGetters } from "vuex";
+import { faAddressCard, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   mounted() {
@@ -40,12 +44,18 @@ export default {
   computed: {
     ...mapGetters({
       user: "getUser"
-    })
+    }),
+    appIcon() {
+      return faAddressCard;
+    },
+    exit() {
+      return faSignOutAlt;
+    }
   },
   created() {
     netlifyIdentity.on("login", user => {
+      netlifyIdentity.close();
       this.setUser(user);
-      console.log("login", user);
     });
   },
   methods: {
@@ -56,6 +66,7 @@ export default {
     signout() {
       netlifyIdentity.logout();
       this.setUser({});
+      this.$router.push("/");
     },
     createAccount() {
       netlifyIdentity.open("signup");
@@ -100,6 +111,14 @@ export default {
     &:hover {
       color: #00bc11;
       background: #fff;
+    }
+  }
+  &__Buttons svg {
+    color: #fff;
+    margin-right: 4px;
+    font-size: 4vmin;
+    &:hover {
+      color: rgb(226, 223, 31);
     }
   }
 }
