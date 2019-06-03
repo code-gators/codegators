@@ -44,13 +44,18 @@ const router = new Router({
       name: "sponsors",
       component: () =>
         import(/* webpackChunkName: "sponsors" */ "./views/Sponsors.vue")
+    },
+    {
+      path: "/*",
+      name: "notfound",
+      component: () =>
+        import(/* webpackChunkName: "notfound" */ "./views/NotFound.vue")
     }
   ]
 });
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     const { access_token: token, expires_at: expires } = store.getters.getJwt;
-    console.log(Date.now(), expires);
     if (token !== "" && expires > Date.now()) {
       next();
       return;
