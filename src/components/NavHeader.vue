@@ -56,6 +56,7 @@ export default {
     netlifyIdentity.on("login", user => {
       netlifyIdentity.close();
       this.setUser(user);
+      this.$router.push("/profile");
     });
   },
   methods: {
