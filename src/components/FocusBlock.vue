@@ -16,17 +16,13 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   computed: {
-    user() {
-      if (localStorage["gotrue.user"]) {
-        let userData = JSON.parse(localStorage["gotrue.user"]);
-        let { full_name } = userData.user_metadata;
-        return full_name || false;
-      } else {
-        return false;
-      }
-    }
+    ...mapGetters({
+      user: "getUser"
+    })
   }
 };
 </script>

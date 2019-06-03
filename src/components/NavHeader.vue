@@ -14,7 +14,7 @@
         <b-nav-item :to="{ name: 'mission' }">Mission</b-nav-item>
         <b-nav-item :to="{ name: 'sponsors' }">Sponsors</b-nav-item>
       </b-navbar-nav>
-      <b-nav-form v-if="user" class="ml-auto Header__Buttons">
+      <b-nav-form v-if="!user" class="ml-auto Header__Buttons">
         <b-button class="my-2 my-sm-0" @click="createAccount"
           >Create Account</b-button
         >
@@ -29,6 +29,7 @@
 </template>
 <script>
 import netlifyIdentity from "netlify-identity-widget";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   mounted() {
@@ -37,22 +38,24 @@ export default {
     });
   },
   computed: {
-    user() {
-      if (localStorage["gotrue.user"]) {
-        let userData = JSON.parse(localStorage["gotrue.user"]);
-        let { full_name } = userData.user_metadata;
-        return full_name || false;
-      } else {
-        return false;
-      }
-    }
+    ...mapGetters({
+      user: "getUser"
+    })
+  },
+  created() {
+    netlifyIdentity.on("login", user => {
+      this.setUser(user);
+      console.log("login", user);
+    });
   },
   methods: {
+    ...mapActions({ setUser: "setUser" }),
     login() {
       netlifyIdentity.open("login"); // open the modal to the login tab
     },
     signout() {
       netlifyIdentity.logout();
+      window.location.reload();
     },
     createAccount() {
       netlifyIdentity.open("signup");
