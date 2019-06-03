@@ -14,11 +14,14 @@
         <b-nav-item :to="{ name: 'mission' }">Mission</b-nav-item>
         <b-nav-item :to="{ name: 'sponsors' }">Sponsors</b-nav-item>
       </b-navbar-nav>
-      <b-nav-form class="ml-auto Header__Buttons">
+      <b-nav-form v-if="user" class="ml-auto Header__Buttons">
         <b-button class="my-2 my-sm-0" @click="createAccount"
           >Create Account</b-button
         >
         <b-button class="my-2 my-sm-0" @click="login">Sign In</b-button>
+      </b-nav-form>
+      <b-nav-form v-else class="ml-auto Header__Buttons">
+        <b-button class="my-2 my-sm-0" @click="signout">Sign Out</b-button>
       </b-nav-form>
     </b-navbar>
     <div id="netlify-modal"></div>
@@ -33,9 +36,23 @@ export default {
       container: "#netlify-modal" // defaults to document.body,
     });
   },
+  computed: {
+    user() {
+      if (localStorage["gotrue.user"]) {
+        let userData = JSON.parse(localStorage["gotrue.user"]);
+        let { full_name } = userData.user_metadata;
+        return full_name || false;
+      } else {
+        return false;
+      }
+    }
+  },
   methods: {
     login() {
       netlifyIdentity.open("login"); // open the modal to the login tab
+    },
+    signout() {
+      netlifyIdentity.logout();
     },
     createAccount() {
       netlifyIdentity.open("signup");

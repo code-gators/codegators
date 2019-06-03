@@ -2,7 +2,12 @@
   <div class="FocusBlock">
     <div class="FocusBlock__Body">
       <div class="FocusBlock__Body__Title">
-        Start learning today!
+        <div v-if="user">
+          {{ `Welcome, ${user}` }}
+        </div>
+        <div v-else>
+          Start learning today!
+        </div>
       </div>
       <div>
         <img :src="require('../assets/happy_coder.png')" alt="Gator" />
@@ -10,6 +15,21 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    user() {
+      if (localStorage["gotrue.user"]) {
+        let userData = JSON.parse(localStorage["gotrue.user"]);
+        let { full_name } = userData.user_metadata;
+        return full_name || false;
+      } else {
+        return false;
+      }
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .FocusBlock {
