@@ -5,16 +5,31 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    resume: {
+      progress: 0
+    }
   },
   mutations: {
     SET_USER(state, user) {
       state.user = user;
+    },
+    SET_RESUME_BASIC_INFO(state, payload) {
+      state.resume.basic_info = payload;
+    },
+    SET_PROGRESS(state, payload) {
+      state.resume.progress = payload;
     }
   },
   actions: {
     setUser({ commit }, payload) {
       commit("SET_USER", payload);
+    },
+    setProgress({ commit }, payload) {
+      commit("SET_PROGRESS", payload);
+    },
+    setResumeBasicInfo({ commit }, payload) {
+      commit("SET_RESUME_BASIC_INFO", payload);
     }
   },
   getters: {
@@ -31,6 +46,16 @@ export default new Vuex.Store({
       } else {
         return false;
       }
+    },
+    getEmail(state) {
+      if (state.user.email) {
+        return state.user.email;
+      } else {
+        return false;
+      }
+    },
+    getProgress(state) {
+      return state.resume.progress;
     }
   }
 });
