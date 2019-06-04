@@ -17,7 +17,7 @@ exports.handler = async function(event, context) {
       // body: JSON.stringify(data)
     };
   } catch (err) {
-    console.log(err), event, context; // output to netlify function log
+    console.log(err, event, context); // output to netlify function log
     return {
       statusCode: 500,
       body: err.message // Could be a custom message or object i.e. JSON.stringify(err)
