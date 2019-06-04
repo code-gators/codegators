@@ -70,6 +70,16 @@
           ></b-form-input>
           <b-row>
             <b-col class="py-2"
+              ><span>City</span
+              ><b-form-input
+                id="textarea"
+                v-model="address.city"
+                placeholder=""
+                rows="3"
+                max-rows="6"
+              ></b-form-input
+            ></b-col>
+            <b-col class="py-2"
               ><span>State</span>
               <b-form-input
                 v-model="address.state"
@@ -83,16 +93,6 @@
                 id="input-list"
                 :options="options"
               ></b-form-datalist
-            ></b-col>
-            <b-col class="py-2"
-              ><span>City</span
-              ><b-form-input
-                id="textarea"
-                v-model="address.city"
-                placeholder=""
-                rows="3"
-                max-rows="6"
-              ></b-form-input
             ></b-col>
             <b-col class="py-2"
               ><span>Zipcode</span
