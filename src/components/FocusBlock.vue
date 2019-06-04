@@ -27,8 +27,7 @@ export default {
   methods: {
     test() {
       this.$http.get("/.netlify/functions/dadjoke").then(response => {
-        //console.log(response.data);
-        response;
+        console.log(response);
       });
     }
   }
