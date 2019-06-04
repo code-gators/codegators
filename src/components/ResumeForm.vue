@@ -258,5 +258,11 @@ const options = [
   .card-footer button {
     margin-left: auto;
   }
+  .card-header {
+    background: rgb(241, 150, 12);
+  }
+  .card {
+    border: 2px solid rgb(241, 150, 12);
+  }
 }
 </style>
