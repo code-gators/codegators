@@ -60,13 +60,15 @@ export default {
     });
   },
   methods: {
-    ...mapActions({ setUser: "setUser" }),
+    ...mapActions({ setUser: "setUser", setProgress: "setProgress" }),
     login() {
       netlifyIdentity.open("login"); // open the modal to the login tab
     },
     signout() {
       netlifyIdentity.logout();
       this.setUser({});
+      this.setProgress(0);
+
       this.$router.push("/");
     },
     createAccount() {
@@ -82,7 +84,7 @@ export default {
   .navbar-nav {
     .nav-link {
       color: #ffffff;
-      font-size: 2vmin;
+      font-size: 3vmin;
       &:hover {
         color: rgb(226, 223, 31);
       }

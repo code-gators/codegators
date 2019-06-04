@@ -1,8 +1,7 @@
 <template>
   <div class="ResumeForm">
-    <b-progress :value="value" :max="max" animated></b-progress>
-
-    <b-card bg-variant="light" footer-tag="footer">
+    <b-card bg-variant="light" footer-tag="footer" header-tag="header">
+      <b-progress slot="header" :value="value" :max="max" animated></b-progress>
       <b-form-group
         label-cols-lg="3"
         label="Basic information"
@@ -73,6 +72,8 @@
             <b-col class="py-2"
               ><span>State</span>
               <b-form-input
+                v-model="address.state"
+                disabled
                 rows="3"
                 max-rows="6"
                 list="input-list"
@@ -143,7 +144,7 @@ export default {
         line1: "",
         line2: "",
         city: "",
-        state: "",
+        state: "Florida",
         zipcode: ""
       },
       options: options,
@@ -165,7 +166,7 @@ export default {
       val = this.address.line1 != "" ? (val += 3) : val;
       val = this.address.line2 != "" ? (val += 3) : val;
       val = this.address.city != "" ? (val += 4) : val;
-      val = this.address.state != "" ? (val += 4) : val;
+      val = this.address.state != "" ? (val += 0) : val;
       val = this.address.zipcode != "" ? (val += 4) : val;
       this.setProgress(val);
 
@@ -182,6 +183,7 @@ export default {
         name: this.user,
         last_name: this.last_name,
         email: this.email,
+        phone: this.phone,
         address: this.address
       };
       this.setResumeBasicInfo(resume);
