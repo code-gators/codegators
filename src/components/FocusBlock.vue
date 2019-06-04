@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     test() {
-      this.axios.get("/.netlify/functions/hello").then(response => {
+      this.$http.get("/.netlify/functions/hello").then(response => {
         console.log(response.data);
       });
     }
