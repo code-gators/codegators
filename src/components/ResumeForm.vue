@@ -120,7 +120,7 @@
       </b-form-group>
       <b-navbar slot="footer">
         <b-nav-form class="ml-auto Header__Buttons">
-          <b-button variant="success" @click="setResume">Continue</b-button>
+          <b-button variant="primary" @click="setResume">Continue</b-button>
         </b-nav-form>
       </b-navbar>
     </b-card>
@@ -255,8 +255,12 @@ const options = [
 
 <style lang="scss" scoped>
 .ResumeForm {
-  .card-footer button {
-    margin-left: auto;
+  .card-footer {
+    background: rgb(241, 150, 12);
+
+    button {
+      margin-left: auto;
+    }
   }
   .card-header {
     background: rgb(241, 150, 12);

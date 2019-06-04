@@ -9,7 +9,7 @@
           Start learning today!
         </div>
       </div>
-      <div>
+      <div @click="test">
         <img :src="require('../assets/happy_coder.png')" alt="Gator" />
       </div>
     </div>
@@ -23,6 +23,13 @@ export default {
     ...mapGetters({
       user: "getUser"
     })
+  },
+  methods: {
+    test() {
+      this.axios.get("/.netlify/functions/hello").then(response => {
+        console.log(response.data);
+      });
+    }
   }
 };
 </script>
