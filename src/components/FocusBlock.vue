@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     test() {
-      this.$http.get("/.netlify/functions/hello").then(response => {
+      this.$http.get("/.netlify/functions/save_resume").then(response => {
         console.log(response.data);
       });
     }
