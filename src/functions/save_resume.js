@@ -26,13 +26,22 @@
 // };
 
 export async function handler(event, context) {
-  const { identity, user } = context.clientContext;
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: `Hello world ${Math.floor(Math.random() * 10)} ${JSON.stringify(
-        user
-      )} -- ${JSON.stringify(identity)}`
-    })
-  };
+  const { identity } = context.clientContext;
+  if (identity.token) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: `Hello world ${Math.floor(
+          Math.random() * 10
+        )} ${JSON.stringify(event)}`
+      })
+    };
+  } else {
+    return {
+      statusCode: 504,
+      body: JSON.stringify({
+        message: `Invalid Token`
+      })
+    };
+  }
 }
