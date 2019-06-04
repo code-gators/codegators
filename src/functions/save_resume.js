@@ -26,14 +26,15 @@
 // };
 
 export async function handler(event, context) {
-  const { identity } = context.clientContext;
+  event;
+  const { identity, user } = context.clientContext;
   if (identity.token) {
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: `Hello world ${Math.floor(
           Math.random() * 10
-        )} ${JSON.stringify(event)}`
+        )} ${JSON.stringify(user)}`
       })
     };
   } else {
