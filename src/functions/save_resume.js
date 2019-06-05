@@ -34,7 +34,7 @@ export async function handler(event, context) {
       body: JSON.stringify({
         message: `Hello world ${Math.floor(
           Math.random() * 10
-        )} ${JSON.stringify(user)}`
+        )} ${JSON.stringify(user)} --- ${JSON.stringify(event)}`
       })
     };
   } else {
