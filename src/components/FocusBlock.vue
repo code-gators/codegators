@@ -22,13 +22,18 @@ export default {
   computed: {
     ...mapGetters({
       user: "getUser",
-      getJwt: "getJwt"
+      getJwt: "getJwt",
+      headers: "getHeaders"
     })
   },
   methods: {
     test() {
       this.$http
-        .post("/.netlify/functions/save_resume", this.getJwt.access_token)
+        .post(
+          "/.netlify/functions/save_resume",
+          this.getJwt.access_token,
+          this.headers
+        )
         .then(response => {
           console.log(response);
         });

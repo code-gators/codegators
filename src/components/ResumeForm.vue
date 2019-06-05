@@ -257,6 +257,7 @@ const options = [
 .ResumeForm {
   .card-footer {
     background: rgb(241, 150, 12);
+    padding: 5px;
 
     button {
       margin-left: auto;

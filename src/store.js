@@ -56,6 +56,9 @@ export default new Vuex.Store({
     },
     getProgress(state) {
       return state.resume.progress;
+    },
+    getHeaders(state) {
+      return state.user.headers;
     }
   }
 });

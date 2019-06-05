@@ -38,7 +38,7 @@ import { faAddressCard, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 export default {
   mounted() {
     netlifyIdentity.init({
-      container: "#netlify-modal" // defaults to document.body,
+      container: "#netlify-modal"
     });
   },
   computed: {
@@ -53,8 +53,9 @@ export default {
     }
   },
   created() {
-    netlifyIdentity.on("login", user => {
+    netlifyIdentity.on("login", async user => {
       netlifyIdentity.close();
+      user.headers = await this.generateHeaders();
       this.setUser(user);
       this.$router.push("/profile");
     });
@@ -73,6 +74,18 @@ export default {
     },
     createAccount() {
       netlifyIdentity.open("signup");
+    },
+    generateHeaders() {
+      const headers = { "Content-Type": "application/json" };
+      if (netlifyIdentity.currentUser()) {
+        return netlifyIdentity
+          .currentUser()
+          .jwt()
+          .then(token => {
+            return { ...headers, Authorization: `Bearer ${token}` };
+          });
+      }
+      return Promise.resolve(headers);
     }
   }
 };
