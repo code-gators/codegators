@@ -2,4 +2,4 @@
   functions = "lambda"
 
 [template.environment]
-  FAUNADB_SECRET=fnADQF2j-hACAUJ9tJLIcXISRXEB6lDCTQxdKYvE
+  FAUNADB_SECRET= "fnADQF2j-hACAUJ9tJLIcXISRXEB6lDCTQxdKYvE"
