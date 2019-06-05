@@ -21,14 +21,17 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      user: "getUser"
+      user: "getUser",
+      getJwt: "getJwt"
     })
   },
   methods: {
     test() {
-      this.$http.get("/.netlify/functions/dadjoke").then(response => {
-        console.log(response);
-      });
+      this.$http
+        .post("/.netlify/functions/save_resume", this.getJwt.access_token)
+        .then(response => {
+          console.log(response);
+        });
     }
   }
 };
