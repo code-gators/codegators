@@ -29,11 +29,7 @@ export default {
   methods: {
     test() {
       this.$http
-        .post(
-          "/.netlify/functions/save_resume",
-          this.getJwt.access_token,
-          this.headers
-        )
+        .post("/.netlify/functions/save_resume", null, this.headers)
         .then(response => {
           console.log(response);
         });
