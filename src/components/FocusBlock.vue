@@ -29,7 +29,11 @@ export default {
   methods: {
     test() {
       this.$http
-        .post("/.netlify/functions/save_resume", null, this.headers)
+        .post(
+          "https://www.codegators.org/.netlify/functions/save_resume",
+          null,
+          this.headers
+        )
         .then(response => {
           console.log(response);
         });

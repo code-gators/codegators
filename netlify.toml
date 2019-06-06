@@ -1,5 +1,4 @@
 [build]
+  command = "npm run build"
   functions = "lambda"
-
-[template.environment]
-  FAUNADB_SECRET= "fnADQF2j-hACAUJ9tJLIcXISRXEB6lDCTQxdKYvE"
+  publish = "dist"
